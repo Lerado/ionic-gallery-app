@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Photo Gallery
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <!-- Show photos -->
+    <ion-grid>
+        <ion-row>
+            @for (photo of photos(); track $index) {
+            <ion-col size="6">
+                <ion-img [src]="photo.webviewPath"></ion-img>
+            </ion-col>
+            }
+            @empty {
+            <ion-col>No photos</ion-col>
+            }
+        </ion-row>
+    </ion-grid>
+
+    <!--  Add photo button -->
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button (click)="addPhotoToGallery()">
+            <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+</ion-content>
